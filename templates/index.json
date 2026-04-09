@@ -1,0 +1,66 @@
+{
+  "sections": {
+    "sd-hero": {
+      "type": "sd-hero",
+      "settings": {
+        "eyebrow": "Est. 2014 \u00b7 Built for the wild",
+        "heading": "Born Free.\nBuilt Tough.",
+        "heading_size": 72,
+        "height": 600,
+        "overlay_opacity": 55,
+        "subtext": "Clothing for the ones who'd rather be on the trail than at the mall. Built since 2014 for real people living real lives.",
+        "btn1_label": "Shop Now",
+        "btn1_url": "/collections/all",
+        "btn2_label": "Our Story",
+        "btn2_url": "/pages/our-story"
+      }
+    },
+    "sd-badge-strip": {
+      "type": "sd-badge-strip",
+      "blocks": {
+        "b1": { "type": "badge", "settings": { "text": "Free shipping over $75" } },
+        "b2": { "type": "badge", "settings": { "text": "Est. 2014" } },
+        "b3": { "type": "badge", "settings": { "text": "Men's & Women's" } },
+        "b4": { "type": "badge", "settings": { "text": "New drops monthly" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"]
+    },
+    "sd-featured": {
+      "type": "sd-featured",
+      "settings": {
+        "title": "New Arrivals",
+        "product_count": 4,
+        "columns": 4
+      }
+    },
+    "sd-lifestyle": {
+      "type": "sd-lifestyle",
+      "blocks": {
+        "mens": { "type": "panel", "settings": { "title": "Hit the Trail", "subtitle": "Men's Collection", "link": "/collections/mens" } },
+        "womens": { "type": "panel", "settings": { "title": "Dock Ready", "subtitle": "Women's Collection", "link": "/collections/womens" } }
+      },
+      "block_order": ["mens", "womens"]
+    },
+    "sd-brand-bar": {
+      "type": "sd-brand-bar",
+      "settings": {
+        "brand_name": "Stray Dog",
+        "tagline": "Clothing \u00b7 Est. 2014",
+        "description": "We didn't start in a boardroom. We started in the mud, on the water, at the tailgate. Stray Dog is for the ones who live outside the lines.",
+        "link_label": "Read Our Story",
+        "link_url": "/pages/our-story"
+      }
+    },
+    "sd-email-signup": {
+      "type": "sd-email-signup",
+      "settings": {
+        "eyebrow": "Join the Pack",
+        "title": "Stay Stray",
+        "subtext": "New drops, event appearances, and exclusive deals. No spam, just the good stuff.",
+        "placeholder": "your@email.com",
+        "btn_label": "Subscribe"
+      }
+    }
+  },
+  "order": ["sd-hero", "sd-badge-strip", "sd-featured", "sd-lifestyle", "sd-brand-bar", "sd-email-signup"]
+}

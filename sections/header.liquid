@@ -1,0 +1,93 @@
+<style>
+.sd-header {
+  background: #0a0a0a;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.sd-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.sd-header__logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-decoration: none;
+  line-height: 1;
+}
+.sd-header__logo span {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #aaa;
+  font-weight: 400;
+  margin-top: -2px;
+  text-transform: uppercase;
+}
+.sd-header__nav { display: flex; gap: 2rem; }
+.sd-header__nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.sd-header__nav a:hover { color: #fff; }
+.sd-header__icons { display: flex; gap: 1rem; align-items: center; }
+.sd-header__icon {
+  color: #aaa;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.sd-header__icon:hover { color: #fff; }
+.sd-header__icon svg { width: 20px; height: 20px; }
+@media (max-width: 768px) {
+  .sd-header__nav { display: none; }
+}
+</style>
+
+<header class="sd-header">
+  <div class="sd-header__inner">
+    <a href="/" class="sd-header__logo">
+      {{ shop.name }}
+      <span>Clothing</span>
+    </a>
+    <nav class="sd-header__nav">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+    <div class="sd-header__icons">
+      <a href="/search" class="sd-header__icon" aria-label="Search">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </a>
+      <a href="/account" class="sd-header__icon" aria-label="Account">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </a>
+      <a href="/cart" class="sd-header__icon" aria-label="Cart">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "div",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Navigation Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

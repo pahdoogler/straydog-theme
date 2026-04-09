@@ -1,0 +1,97 @@
+{% comment %} Stray Dog Clothing — Email Signup Section {% endcomment %}
+
+<style>
+.sd-signup {
+  background: #0f0f0f;
+  border-top: 1px solid #1e1e1e;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.sd-signup__eyebrow {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 8px;
+}
+.sd-signup__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.sd-signup__sub {
+  font-size: 13px;
+  color: #666;
+  max-width: 360px;
+  margin: 0 auto 1.75rem;
+  line-height: 1.7;
+}
+.sd-signup__form {
+  display: flex;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.sd-signup__input {
+  flex: 1;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-right: none;
+  color: #fff;
+  padding: 13px 16px;
+  font-size: 13px;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+.sd-signup__input::placeholder { color: #555; }
+.sd-signup__btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 13px 22px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+.sd-signup__btn:hover { background: #ddd; }
+</style>
+
+<section class="sd-signup">
+  <div class="sd-signup__eyebrow">{{ section.settings.eyebrow }}</div>
+  <h2 class="sd-signup__title">{{ section.settings.title }}</h2>
+  <p class="sd-signup__sub">{{ section.settings.subtext }}</p>
+  {% form 'customer', id: 'sd-email-form' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <div class="sd-signup__form">
+      <input
+        class="sd-signup__input"
+        type="email"
+        name="contact[email]"
+        placeholder="{{ section.settings.placeholder }}"
+        required
+      >
+      <button type="submit" class="sd-signup__btn">
+        {{ section.settings.btn_label }}
+      </button>
+    </div>
+  {% endform %}
+</section>
+
+{% schema %}
+{
+  "name": "SD Email Signup",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Join the Pack" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Stay Stray" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "New drops, event appearances, and exclusive deals. No spam, just the good stuff." },
+    { "type": "text", "id": "placeholder", "label": "Input Placeholder", "default": "your@email.com" },
+    { "type": "text", "id": "btn_label", "label": "Button Label", "default": "Subscribe" }
+  ],
+  "presets": [{ "name": "SD Email Signup" }]
+}
+{% endschema %}

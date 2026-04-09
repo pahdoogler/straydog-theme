@@ -1,0 +1,69 @@
+{% comment %} Stray Dog Clothing — Badge Strip {% endcomment %}
+
+<style>
+.sd-badges {
+  background: #1a1a1a;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 14px 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.sd-badges__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+}
+.sd-badges__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #444;
+  flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .sd-badges { gap: 1rem; }
+  .sd-badges__item { font-size: 10px; }
+}
+</style>
+
+<div class="sd-badges">
+  {% for block in section.blocks %}
+    <div class="sd-badges__item" {{ block.shopify_attributes }}>
+      <span class="sd-badges__dot"></span>
+      {{ block.settings.text }}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "SD Badge Strip",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Free shipping over $75" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "SD Badge Strip",
+    "blocks": [
+      { "type": "badge", "settings": { "text": "Free shipping over $75" }},
+      { "type": "badge", "settings": { "text": "Est. 2014" }},
+      { "type": "badge", "settings": { "text": "Men's & Women's" }},
+      { "type": "badge", "settings": { "text": "New drops monthly" }}
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "sd-featured",
+      "settings": {
+        "title": "All Products",
+        "product_count": 12,
+        "columns": 3
+      }
+    }
+  },
+  "order": ["main"]
+}

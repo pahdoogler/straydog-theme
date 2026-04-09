@@ -1,0 +1,25 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Stray Dog Clothing",
+    "theme_version": "1.0.0",
+    "theme_author": "Stray Dog",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "Background", "default": "#111111" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#ffffff" },
+      { "type": "color", "id": "color_accent", "label": "Accent", "default": "#ffffff" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      { "type": "font_picker", "id": "heading_font", "label": "Heading Font", "default": "bebas_neue_n4" },
+      { "type": "font_picker", "id": "body_font", "label": "Body Font", "default": "inter_n4" }
+    ]
+  }
+]

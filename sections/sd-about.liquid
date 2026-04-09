@@ -1,0 +1,272 @@
+<style>
+.sd-about{background:#111;color:#fff}
+.sd-about__hero{background:#141414;padding:5rem 2rem;text-align:center;border-bottom:1px solid #1e1e1e}
+.sd-about__eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:#555;margin-bottom:1rem}
+.sd-about__hero-title{font-family:'Bebas Neue',sans-serif;font-size:80px;letter-spacing:4px;color:#fff;line-height:0.9;margin-bottom:1.5rem;text-transform:uppercase}
+.sd-about__hero-title span{color:#444}
+.sd-about__rule{width:40px;height:1px;background:#333;margin:0 auto 1.5rem}
+.sd-about__hero-sub{font-size:15px;color:#777;max-width:520px;margin:0 auto;line-height:1.8}
+.sd-about__origin{display:grid;grid-template-columns:1fr 1fr;min-height:460px}
+.sd-about__origin-img{background:#161616;border-right:1px solid #1e1e1e;overflow:hidden;position:relative}
+.sd-about__origin-img img{width:100%;height:100%;object-fit:cover}
+.sd-about__origin-content{padding:4rem 3rem;background:#111;display:flex;flex-direction:column;justify-content:center}
+.sd-about__section-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#555;margin-bottom:1rem}
+.sd-about__section-title{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:2px;color:#fff;line-height:1;margin-bottom:1.5rem;text-transform:uppercase}
+.sd-about__body{font-size:14px;color:#777;line-height:1.9;margin-bottom:1rem}
+.sd-about__tags{display:flex;gap:16px;flex-wrap:wrap;margin-top:1.5rem}
+.sd-about__tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#555;border-left:2px solid #333;padding-left:12px}
+.sd-about__stats{display:grid;grid-template-columns:repeat(3,1fr);background:#0f0f0f;border-top:1px solid #1e1e1e;border-bottom:1px solid #1e1e1e}
+.sd-about__stat{text-align:center;padding:2.5rem 1rem;border-right:1px solid #1e1e1e}
+.sd-about__stat:last-child{border-right:none}
+.sd-about__stat-num{font-family:'Bebas Neue',sans-serif;font-size:54px;letter-spacing:2px;color:#fff;line-height:1}
+.sd-about__stat-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#555;margin-top:6px}
+.sd-about__values{padding:4rem 2rem;background:#111}
+.sd-about__values-title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:2px;color:#fff;text-align:center;margin-bottom:3rem;text-transform:uppercase}
+.sd-about__values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1e1e1e}
+.sd-about__value{background:#111;padding:2.5rem 2rem}
+.sd-about__value-num{font-family:'Bebas Neue',sans-serif;font-size:48px;color:#222;line-height:1;margin-bottom:8px}
+.sd-about__value-title{font-size:13px;font-weight:500;color:#ddd;margin-bottom:10px;letter-spacing:1px;text-transform:uppercase}
+.sd-about__value-body{font-size:13px;color:#666;line-height:1.8}
+.sd-about__team{padding:4rem 2rem;background:#0f0f0f;border-top:1px solid #1e1e1e}
+.sd-about__team-header{text-align:center;margin-bottom:3rem}
+.sd-about__team-title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:2px;color:#fff;text-transform:uppercase}
+.sd-about__team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sd-about__team-card{background:#141414;border:1px solid #1e1e1e;overflow:hidden}
+.sd-about__team-photo{aspect-ratio:4/5;overflow:hidden;background:#1a1a1a}
+.sd-about__team-photo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.sd-about__team-info{padding:1.25rem;border-top:1px solid #1e1e1e}
+.sd-about__team-name{font-size:15px;font-weight:500;color:#ddd;margin-bottom:4px}
+.sd-about__team-role{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#555}
+.sd-about__cta{background:#161616;padding:4rem 2rem;text-align:center;border-top:1px solid #1e1e1e}
+.sd-about__cta-title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#fff;margin-bottom:8px;text-transform:uppercase}
+.sd-about__cta-sub{font-size:14px;color:#666;max-width:400px;margin:0 auto 2rem;line-height:1.7}
+.sd-about__cta-btn{display:inline-block;background:#fff;color:#000;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:14px 36px;text-decoration:none}
+.sd-about__cta-btn:hover{background:#ddd}
+@media(max-width:768px){
+  .sd-about__origin{grid-template-columns:1fr}
+  .sd-about__hero-title{font-size:54px}
+  .sd-about__values-grid{grid-template-columns:1fr}
+  .sd-about__team-grid{grid-template-columns:repeat(2,1fr)}
+  .sd-about__stats{grid-template-columns:1fr}
+  .sd-about__stat{border-right:none;border-bottom:1px solid #1e1e1e}
+}
+</style>
+
+<div class="sd-about">
+
+  <div class="sd-about__hero">
+    <div class="sd-about__eyebrow">Our Story</div>
+    <h1 class="sd-about__hero-title">Stray Dog<br><span>Clothing</span></h1>
+    <div class="sd-about__rule"></div>
+    <p class="sd-about__hero-sub">{{ section.settings.hero_sub }}</p>
+  </div>
+
+  <div class="sd-about__origin">
+    <div class="sd-about__origin-img">
+      {%- if section.settings.origin_image != blank -%}
+        <img src="{{ section.settings.origin_image | image_url: width: 900 }}" alt="Stray Dog Origin" loading="lazy">
+      {%- endif -%}
+    </div>
+    <div class="sd-about__origin-content">
+      <div class="sd-about__section-eyebrow">Where it started</div>
+      <h2 class="sd-about__section-title">{{ section.settings.origin_title }}</h2>
+      <p class="sd-about__body">{{ section.settings.origin_body_1 }}</p>
+      <p class="sd-about__body">{{ section.settings.origin_body_2 }}</p>
+      <div class="sd-about__tags">
+        <span class="sd-about__tag">Est. 2014</span>
+        <span class="sd-about__tag">Outdoor Lifestyle</span>
+        <span class="sd-about__tag">Real People</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sd-about__stats">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'stat' -%}
+        <div class="sd-about__stat" {{ block.shopify_attributes }}>
+          <div class="sd-about__stat-num">{{ block.settings.number }}</div>
+          <div class="sd-about__stat-label">{{ block.settings.label }}</div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="sd-about__values">
+    <h2 class="sd-about__values-title">What We Stand For</h2>
+    <div class="sd-about__values-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'value' -%}
+          <div class="sd-about__value" {{ block.shopify_attributes }}>
+            <div class="sd-about__value-num">0{{ forloop.index }}</div>
+            <div class="sd-about__value-title">{{ block.settings.title }}</div>
+            <p class="sd-about__value-body">{{ block.settings.body }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="sd-about__team">
+    <div class="sd-about__team-header">
+      <div class="sd-about__section-eyebrow">The People Behind It</div>
+      <h2 class="sd-about__team-title">The Pack</h2>
+    </div>
+    <div class="sd-about__team-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'team_member' -%}
+          <div class="sd-about__team-card" {{ block.shopify_attributes }}>
+            <div class="sd-about__team-photo">
+              {%- if block.settings.photo != blank -%}
+                <img src="{{ block.settings.photo | image_url: width: 600 }}" alt="{{ block.settings.name }}" loading="lazy">
+              {%- endif -%}
+            </div>
+            <div class="sd-about__team-info">
+              <div class="sd-about__team-name">{{ block.settings.name }}</div>
+              <div class="sd-about__team-role">{{ block.settings.role }}</div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="sd-about__cta">
+    <div class="sd-about__eyebrow">Ready to ride?</div>
+    <div class="sd-about__cta-title">Join the Pack</div>
+    <p class="sd-about__cta-sub">{{ section.settings.cta_sub }}</p>
+    <a href="{{ section.settings.cta_url }}" class="sd-about__cta-btn">{{ section.settings.cta_label }}</a>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "SD About Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "hero_sub",
+      "label": "Hero Subtext",
+      "default": "We didn't come from a fashion background. We came from the mud, the water, the tailgate, and the trail. Stray Dog started in 2014 as a way to wear what you live."
+    },
+    {
+      "type": "image_picker",
+      "id": "origin_image",
+      "label": "Origin Story Image"
+    },
+    {
+      "type": "text",
+      "id": "origin_title",
+      "label": "Origin Title",
+      "default": "Built From The Ground Up"
+    },
+    {
+      "type": "textarea",
+      "id": "origin_body_1",
+      "label": "Origin Paragraph 1",
+      "default": "Stray Dog Clothing was founded in 2014 by people who live life off the beaten path. UTVs, boats, lakes, backroads — that's our world."
+    },
+    {
+      "type": "textarea",
+      "id": "origin_body_2",
+      "label": "Origin Paragraph 2",
+      "default": "What started as a few shirts sold at local events grew into a full line of apparel built for people who don't follow the crowd."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Button Text",
+      "default": "Shop the Collection"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_sub",
+      "label": "CTA Subtext",
+      "default": "Gear built for the ones who live it. Shop the full collection and find your next favorite piece."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "2014"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Year Founded"
+        }
+      ]
+    },
+    {
+      "type": "value",
+      "name": "Brand Value",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Live Outside the Lines"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description",
+          "default": "Rules are for people who don't have better things to do. We make gear for the ones who'd rather be out there."
+        }
+      ]
+    },
+    {
+      "type": "team_member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Co-Founder"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role",
+          "default": "Stray Dog Clothing"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SD About Page",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "2014", "label": "Year Founded" } },
+        { "type": "stat", "settings": { "number": "10+", "label": "Years in the Game" } },
+        { "type": "stat", "settings": { "number": "100%", "label": "Built for the Wild" } },
+        { "type": "value", "settings": { "title": "Live Outside the Lines", "body": "Rules are for people who don't have better things to do." } },
+        { "type": "value", "settings": { "title": "Built to Last", "body": "Every piece is designed to hold up on the trail, at the event, on the water." } },
+        { "type": "value", "settings": { "title": "Real Community", "body": "We show up in person at rallies, swap meets, and outdoor events." } },
+        { "type": "team_member", "settings": { "name": "Co-Founder", "role": "Stray Dog Clothing" } },
+        { "type": "team_member", "settings": { "name": "Co-Founder", "role": "Stray Dog Clothing" } },
+        { "type": "team_member", "settings": { "name": "Team Member", "role": "Stray Dog Clothing" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

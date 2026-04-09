@@ -1,0 +1,75 @@
+{% comment %} Stray Dog Clothing — Brand Story Bar {% endcomment %}
+
+<style>
+.sd-brand-bar {
+  background: #161616;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 3.5rem 2rem;
+  text-align: center;
+}
+.sd-brand-bar__logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 54px;
+  letter-spacing: 5px;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.sd-brand-bar__sub {
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #555;
+  margin-top: 6px;
+}
+.sd-brand-bar__rule {
+  width: 40px;
+  height: 1px;
+  background: #333;
+  margin: 1.5rem auto;
+}
+.sd-brand-bar__desc {
+  font-size: 14px;
+  color: #777;
+  max-width: 500px;
+  margin: 0 auto 1.75rem;
+  line-height: 1.8;
+}
+.sd-brand-bar__link {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+  text-decoration: none;
+  border-bottom: 1px solid #444;
+  padding-bottom: 2px;
+}
+.sd-brand-bar__link:hover { color: #fff; border-color: #fff; }
+</style>
+
+<section class="sd-brand-bar">
+  <div class="sd-brand-bar__logo">{{ section.settings.brand_name }}</div>
+  <div class="sd-brand-bar__sub">{{ section.settings.tagline }}</div>
+  <div class="sd-brand-bar__rule"></div>
+  <p class="sd-brand-bar__desc">{{ section.settings.description }}</p>
+  {% if section.settings.link_label != blank %}
+    <a href="{{ section.settings.link_url }}" class="sd-brand-bar__link">
+      {{ section.settings.link_label }} →
+    </a>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "SD Brand Bar",
+  "settings": [
+    { "type": "text", "id": "brand_name", "label": "Brand Name", "default": "Stray Dog" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Clothing · Est. 2014" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "We didn't start in a boardroom. We started in the mud, on the water, at the tailgate. Stray Dog is for the ones who live outside the lines." },
+    { "type": "text", "id": "link_label", "label": "Link Text", "default": "Read Our Story" },
+    { "type": "url", "id": "link_url", "label": "Link URL" }
+  ],
+  "presets": [{ "name": "SD Brand Bar" }]
+}
+{% endschema %}

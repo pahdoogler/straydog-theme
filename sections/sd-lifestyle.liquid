@@ -1,0 +1,105 @@
+{% comment %} Stray Dog Clothing — Lifestyle Split Section {% endcomment %}
+
+<style>
+.sd-lifestyle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 12px 12px;
+  background: #111;
+}
+.sd-lifestyle__card {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  background: #1a1a1a;
+}
+.sd-lifestyle__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.sd-lifestyle__card:hover .sd-lifestyle__img { transform: scale(1.04); }
+.sd-lifestyle__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
+}
+.sd-lifestyle__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.75rem;
+}
+.sd-lifestyle__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.sd-lifestyle__sub {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #bbb;
+}
+@media (max-width: 640px) {
+  .sd-lifestyle { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="sd-lifestyle">
+  {% for block in section.blocks %}
+    <a
+      href="{{ block.settings.link }}"
+      class="sd-lifestyle__card"
+      {{ block.shopify_attributes }}
+    >
+      {% if block.settings.image %}
+        <img
+          class="sd-lifestyle__img"
+          src="{{ block.settings.image | image_url: width: 900 }}"
+          alt="{{ block.settings.title }}"
+          loading="lazy"
+        >
+      {% endif %}
+      <div class="sd-lifestyle__overlay"></div>
+      <div class="sd-lifestyle__content">
+        <div class="sd-lifestyle__title">{{ block.settings.title }}</div>
+        <div class="sd-lifestyle__sub">{{ block.settings.subtitle }} →</div>
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "SD Lifestyle Split",
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "panel",
+      "name": "Panel",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Hit the Trail" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Men's Collection" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "SD Lifestyle Split",
+    "blocks": [
+      { "type": "panel", "settings": { "title": "Hit the Trail", "subtitle": "Men's Collection" }},
+      { "type": "panel", "settings": { "title": "Dock Ready", "subtitle": "Women's Collection" }}
+    ]
+  }]
+}
+{% endschema %}

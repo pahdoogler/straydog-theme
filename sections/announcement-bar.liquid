@@ -1,0 +1,27 @@
+<style>
+.sd-announcement {
+  background: #1a1a1a;
+  border-bottom: 1px solid #222;
+  padding: 10px 2rem;
+  text-align: center;
+}
+.sd-announcement__text {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+}
+</style>
+<div class="sd-announcement">
+  <p class="sd-announcement__text">{{ section.settings.text }}</p>
+</div>
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "Free Shipping Over $75 · Est. 2014 · Built for the Wild" }
+  ],
+  "presets": [{ "name": "Announcement Bar" }]
+}
+{% endschema %}

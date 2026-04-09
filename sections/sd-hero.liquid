@@ -1,0 +1,141 @@
+{% comment %} Stray Dog Clothing — Hero Banner Section {% endcomment %}
+
+<style>
+.sd-hero {
+  position: relative;
+  min-height: {{ section.settings.height }}px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+.sd-hero__bg {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.sd-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 100.0 }});
+}
+.sd-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 4rem;
+  max-width: 580px;
+}
+.sd-hero__eyebrow {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 1rem;
+}
+.sd-hero__heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: {{ section.settings.heading_size }}px;
+  line-height: 0.88;
+  letter-spacing: 3px;
+  color: #fff;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+.sd-hero__subtext {
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 380px;
+}
+.sd-hero__buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sd-hero__btn-primary {
+  display: inline-block;
+  background: #fff;
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  text-decoration: none;
+}
+.sd-hero__btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #555;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  text-decoration: none;
+}
+.sd-hero__btn-primary:hover { background: #ddd; }
+.sd-hero__btn-secondary:hover { border-color: #fff; }
+@media (max-width: 768px) {
+  .sd-hero__content { padding: 0 1.5rem; }
+  .sd-hero__heading { font-size: 52px; }
+}
+</style>
+
+<section class="sd-hero">
+  {% if section.settings.image %}
+    <img
+      class="sd-hero__bg"
+      src="{{ section.settings.image | image_url: width: 1800 }}"
+      alt="{{ section.settings.image.alt | escape }}"
+      loading="eager"
+    >
+  {% endif %}
+  <div class="sd-hero__overlay"></div>
+  <div class="sd-hero__content">
+    {% if section.settings.eyebrow != blank %}
+      <div class="sd-hero__eyebrow">{{ section.settings.eyebrow }}</div>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <h1 class="sd-hero__heading">{{ section.settings.heading }}</h1>
+    {% endif %}
+    {% if section.settings.subtext != blank %}
+      <p class="sd-hero__subtext">{{ section.settings.subtext }}</p>
+    {% endif %}
+    <div class="sd-hero__buttons">
+      {% if section.settings.btn1_label != blank %}
+        <a href="{{ section.settings.btn1_url }}" class="sd-hero__btn-primary">
+          {{ section.settings.btn1_label }}
+        </a>
+      {% endif %}
+      {% if section.settings.btn2_label != blank %}
+        <a href="{{ section.settings.btn2_url }}" class="sd-hero__btn-secondary">
+          {{ section.settings.btn2_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SD Hero Banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background Image" },
+    { "type": "range", "id": "height", "min": 400, "max": 900, "step": 50, "default": 600, "label": "Height (px)" },
+    { "type": "range", "id": "overlay_opacity", "min": 0, "max": 90, "step": 5, "default": 55, "label": "Dark Overlay %" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow Text", "default": "Est. 2014 · Built for the wild" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Born Free.\nBuilt Tough." },
+    { "type": "range", "id": "heading_size", "min": 40, "max": 120, "step": 4, "default": 72, "label": "Heading Size (px)" },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Clothing for the ones who'd rather be on the trail than at the mall. Built since 2014 for real people living real lives." },
+    { "type": "text", "id": "btn1_label", "label": "Button 1 Text", "default": "Shop Now" },
+    { "type": "url", "id": "btn1_url", "label": "Button 1 Link" },
+    { "type": "text", "id": "btn2_label", "label": "Button 2 Text", "default": "Our Story" },
+    { "type": "url", "id": "btn2_url", "label": "Button 2 Link" }
+  ],
+  "presets": [{ "name": "SD Hero Banner" }]
+}
+{% endschema %}

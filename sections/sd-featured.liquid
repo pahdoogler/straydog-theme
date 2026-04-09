@@ -1,0 +1,170 @@
+{% comment %} Stray Dog Clothing — Featured Collection Grid {% endcomment %}
+
+<style>
+.sd-featured {
+  padding: 3.5rem 2rem;
+  background: #111;
+}
+.sd-featured__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.sd-featured__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.sd-featured__link {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #888;
+  text-decoration: none;
+  border-bottom: 1px solid #444;
+  padding-bottom: 2px;
+}
+.sd-featured__link:hover { color: #fff; border-color: #fff; }
+.sd-featured__grid {
+  display: grid;
+  grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+  gap: 20px;
+}
+.sd-product-card { cursor: pointer; }
+.sd-product-card__img-wrap {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: #1a1a1a;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.sd-product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.sd-product-card:hover .sd-product-card__img { transform: scale(1.04); }
+.sd-product-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  font-weight: 500;
+}
+.sd-product-card__badge--new { background: #fff; color: #000; }
+.sd-product-card__badge--sale { background: #c0392b; color: #fff; }
+.sd-product-card__vendor {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 4px;
+}
+.sd-product-card__title {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 6px;
+  font-weight: 400;
+  text-decoration: none;
+  display: block;
+}
+.sd-product-card__title:hover { color: #fff; }
+.sd-product-card__price { font-size: 13px; color: #888; }
+.sd-product-card__price s { color: #444; margin-right: 6px; }
+.sd-product-card__swatches {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.sd-product-card__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #333;
+}
+@media (max-width: 768px) {
+  .sd-featured__grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+
+<section class="sd-featured">
+  <div class="sd-featured__header">
+    <h2 class="sd-featured__title">{{ section.settings.title }}</h2>
+    {% if section.settings.collection != blank %}
+      <a href="{{ collections[section.settings.collection].url }}" class="sd-featured__link">View all</a>
+    {% endif %}
+  </div>
+
+  <div class="sd-featured__grid">
+    {% assign featured_collection = collections[section.settings.collection] %}
+    {% assign product_limit = section.settings.product_count %}
+
+    {% for product in featured_collection.products limit: product_limit %}
+      <div class="sd-product-card">
+        <a href="{{ product.url }}" class="sd-product-card__img-wrap" style="display:block">
+          {% if product.images[0] %}
+            <img
+              class="sd-product-card__img"
+              src="{{ product.images[0] | image_url: width: 600 }}"
+              alt="{{ product.images[0].alt | escape }}"
+              loading="lazy"
+            >
+          {% endif %}
+
+          {% assign now = 'now' | date: '%s' | plus: 0 %}
+          {% assign created = product.created_at | date: '%s' | plus: 0 %}
+          {% assign diff_days = now | minus: created | divided_by: 86400 %}
+          {% if diff_days < 30 %}
+            <span class="sd-product-card__badge sd-product-card__badge--new">New</span>
+          {% elsif product.compare_at_price > product.price %}
+            <span class="sd-product-card__badge sd-product-card__badge--sale">Sale</span>
+          {% endif %}
+        </a>
+
+        <div class="sd-product-card__vendor">{{ product.type }}</div>
+        <a href="{{ product.url }}" class="sd-product-card__title">{{ product.title }}</a>
+        <div class="sd-product-card__price">
+          {% if product.compare_at_price > product.price %}
+            <s>{{ product.compare_at_price | money }}</s>
+          {% endif %}
+          {{ product.price | money }}
+        </div>
+
+        {% assign color_option = product.options_by_name['Color'] %}
+        {% if color_option %}
+          <div class="sd-product-card__swatches">
+            {% for value in color_option.values %}
+              {% assign swatch_color = value | downcase | replace: ' ', '' %}
+              <div
+                class="sd-product-card__swatch"
+                title="{{ value }}"
+                style="background: {{ swatch_color }};"
+              ></div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SD Featured Collection",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Section Title", "default": "New Arrivals" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "product_count", "min": 2, "max": 12, "step": 1, "default": 4, "label": "Number of Products" },
+    { "type": "range", "id": "columns", "min": 2, "max": 5, "step": 1, "default": 4, "label": "Columns (Desktop)" }
+  ],
+  "presets": [{ "name": "SD Featured Collection" }]
+}
+{% endschema %}

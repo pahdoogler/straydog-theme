@@ -1,0 +1,98 @@
+<style>
+.sd-footer {
+  background: #0a0a0a;
+  border-top: 1px solid #1c1c1c;
+  padding: 3rem 2rem 2rem;
+}
+.sd-footer__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.sd-footer__top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+.sd-footer__brand-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.sd-footer__brand-sub { font-size: 12px; color: #555; letter-spacing: 1px; }
+.sd-footer__brand-desc { font-size: 12px; color: #444; margin-top: 12px; line-height: 1.6; }
+.sd-footer__col h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.sd-footer__col a {
+  display: block;
+  font-size: 13px;
+  color: #555;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+}
+.sd-footer__col a:hover { color: #fff; }
+.sd-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.sd-footer__copy { font-size: 12px; color: #333; }
+@media (max-width: 768px) {
+  .sd-footer__top { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<footer class="sd-footer">
+  <div class="sd-footer__inner">
+    <div class="sd-footer__top">
+      <div>
+        <div class="sd-footer__brand-name">{{ shop.name }}</div>
+        <div class="sd-footer__brand-sub">Clothing &middot; Est. 2014</div>
+        <p class="sd-footer__brand-desc">Built for the ones who live outside the lines.</p>
+      </div>
+      {%- for block in section.blocks -%}
+        <div class="sd-footer__col" {{ block.shopify_attributes }}>
+          <h4>{{ block.settings.heading }}</h4>
+          {%- for link in block.settings.menu.links -%}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    <div class="sd-footer__bottom">
+      <div class="sd-footer__copy">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "div",
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu Column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Footer" }]
+}
+{% endschema %}
