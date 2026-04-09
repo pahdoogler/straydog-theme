@@ -9,10 +9,88 @@
  */
 {
   "sections": {
-    "main": {
+    "sd-about": {
       "type": "sd-about",
+      "blocks": {
+        "stat1": {
+          "type": "stat",
+          "settings": {
+            "number": "2014",
+            "label": "Year Founded"
+          }
+        },
+        "stat2": {
+          "type": "stat",
+          "settings": {
+            "number": "10+",
+            "label": "Years in the Game"
+          }
+        },
+        "stat3": {
+          "type": "stat",
+          "settings": {
+            "number": "100%",
+            "label": "Built for the Wild"
+          }
+        },
+        "val1": {
+          "type": "value",
+          "settings": {
+            "title": "Live Outside the Lines",
+            "body": "Rules are for people who have better things to do. We make gear for the ones who would rather be out there."
+          }
+        },
+        "val2": {
+          "type": "value",
+          "settings": {
+            "title": "Built to Last",
+            "body": "Every piece is designed to hold up on the trail, at the event, on the water, or just living your life the way you want to."
+          }
+        },
+        "val3": {
+          "type": "value",
+          "settings": {
+            "title": "Real Community",
+            "body": "We show up in person at rallies, swap meets, and outdoor events because we are not just a brand."
+          }
+        },
+        "tm1": {
+          "type": "team_member",
+          "settings": {
+            "name": "Co-Founder",
+            "role": "Stray Dog Clothing"
+          }
+        },
+        "tm2": {
+          "type": "team_member",
+          "settings": {
+            "name": "Co-Founder",
+            "role": "Stray Dog Clothing"
+          }
+        },
+        "tm3": {
+          "type": "team_member",
+          "settings": {
+            "name": "Team Member",
+            "role": "Stray Dog Clothing"
+          }
+        }
+      },
+      "block_order": [
+        "stat1",
+        "stat2",
+        "stat3",
+        "val1",
+        "val2",
+        "val3",
+        "tm1",
+        "tm2",
+        "tm3"
+      ],
       "settings": {}
     }
   },
-  "order": ["main"]
+  "order": [
+    "sd-about"
+  ]
 }
