@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "sd-featured",
+      "settings": {
+        "title": "You May Also Like",
+        "product_count": 4,
+        "columns": 4
+      }
+    }
+  },
+  "order": ["main"]
+}
