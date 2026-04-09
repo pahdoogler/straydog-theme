@@ -1,13 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "sd-hero": {
       "type": "sd-hero",
+      "custom_css": [
+        ".sd-hero__bg {image-rendering: auto; object-fit: cover;}",
+        ".sd-hero__overlay {background: linear-gradient( to right, rgba(0, 0, 0, 0.82) 50%, rgba(0, 0, 0, 0.3) 100% );}",
+        ".sd-hero__subtext {color: #ffffff;}"
+      ],
       "settings": {
-        "eyebrow": "Est. 2014 \u00b7 Built for the wild",
+        "image": "shopify://shop_images/photo_2026-04-08_21-19-35.jpg",
+        "height": 600,
+        "overlay_opacity": 20,
+        "eyebrow": "Est. 2014 · Built for the wild",
         "heading": "Born Free.\nBuilt Tough.",
         "heading_size": 72,
-        "height": 600,
-        "overlay_opacity": 55,
         "subtext": "Clothing for the ones who'd rather be on the trail than at the mall. Built since 2014 for real people living real lives.",
         "btn1_label": "Shop Now",
         "btn1_url": "/collections/all",
@@ -18,17 +33,44 @@
     "sd-badge-strip": {
       "type": "sd-badge-strip",
       "blocks": {
-        "b1": { "type": "badge", "settings": { "text": "Free shipping over $75" } },
-        "b2": { "type": "badge", "settings": { "text": "Est. 2014" } },
-        "b3": { "type": "badge", "settings": { "text": "Men's & Women's" } },
-        "b4": { "type": "badge", "settings": { "text": "New drops monthly" } }
+        "b1": {
+          "type": "badge",
+          "settings": {
+            "text": "Free shipping over $75"
+          }
+        },
+        "b2": {
+          "type": "badge",
+          "settings": {
+            "text": "Est. 2014"
+          }
+        },
+        "b3": {
+          "type": "badge",
+          "settings": {
+            "text": "Men's & Women's"
+          }
+        },
+        "b4": {
+          "type": "badge",
+          "settings": {
+            "text": "New drops monthly"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"]
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {}
     },
     "sd-featured": {
       "type": "sd-featured",
       "settings": {
         "title": "New Arrivals",
+        "collection": "",
         "product_count": 4,
         "columns": 4
       }
@@ -36,16 +78,36 @@
     "sd-lifestyle": {
       "type": "sd-lifestyle",
       "blocks": {
-        "mens": { "type": "panel", "settings": { "title": "Hit the Trail", "subtitle": "Men's Collection", "link": "/collections/mens" } },
-        "womens": { "type": "panel", "settings": { "title": "Dock Ready", "subtitle": "Women's Collection", "link": "/collections/womens" } }
+        "mens": {
+          "type": "panel",
+          "settings": {
+            "image": "shopify://shop_images/photo_2026-04-08_21-19-24.jpg",
+            "title": "Hit the Trail",
+            "subtitle": "Men's Collection",
+            "link": "/collections/mens"
+          }
+        },
+        "womens": {
+          "type": "panel",
+          "settings": {
+            "image": "shopify://shop_images/photo_2026-04-08_21-18-53.jpg",
+            "title": "Dock Ready",
+            "subtitle": "Women's Collection",
+            "link": "/collections/womens"
+          }
+        }
       },
-      "block_order": ["mens", "womens"]
+      "block_order": [
+        "mens",
+        "womens"
+      ],
+      "settings": {}
     },
     "sd-brand-bar": {
       "type": "sd-brand-bar",
       "settings": {
         "brand_name": "Stray Dog",
-        "tagline": "Clothing \u00b7 Est. 2014",
+        "tagline": "Clothing · Est. 2014",
         "description": "We didn't start in a boardroom. We started in the mud, on the water, at the tailgate. Stray Dog is for the ones who live outside the lines.",
         "link_label": "Read Our Story",
         "link_url": "/pages/our-story"
@@ -62,5 +124,12 @@
       }
     }
   },
-  "order": ["sd-hero", "sd-badge-strip", "sd-featured", "sd-lifestyle", "sd-brand-bar", "sd-email-signup"]
+  "order": [
+    "sd-hero",
+    "sd-badge-strip",
+    "sd-featured",
+    "sd-lifestyle",
+    "sd-brand-bar",
+    "sd-email-signup"
+  ]
 }
