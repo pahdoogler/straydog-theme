@@ -70,7 +70,7 @@
       "type": "sd-featured",
       "settings": {
         "title": "New Arrivals",
-        "collection": "",
+        "collection": "frontpage",
         "product_count": 4,
         "columns": 4
       }
