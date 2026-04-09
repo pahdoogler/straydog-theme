@@ -53,7 +53,6 @@
 </style>
 
 <div class="sd-about">
-
   <div class="sd-about__hero">
     <div class="sd-about__eyebrow">Our Story</div>
     <h1 class="sd-about__hero-title">Stray Dog<br><span>Clothing</span></h1>
@@ -136,7 +135,6 @@
     <p class="sd-about__cta-sub">{{ section.settings.cta_sub }}</p>
     <a href="{{ section.settings.cta_url }}" class="sd-about__cta-btn">{{ section.settings.cta_label }}</a>
   </div>
-
 </div>
 
 {% schema %}
@@ -148,7 +146,7 @@
       "type": "textarea",
       "id": "hero_sub",
       "label": "Hero Subtext",
-      "default": "We didn't come from a fashion background. We came from the mud, the water, the tailgate, and the trail. Stray Dog started in 2014 as a way to wear what you live."
+      "default": "We did not come from a fashion background. We came from the mud, the water, the tailgate, and the trail. Stray Dog started in 2014 as a way to wear what you live."
     },
     {
       "type": "image_picker",
@@ -165,13 +163,13 @@
       "type": "textarea",
       "id": "origin_body_1",
       "label": "Origin Paragraph 1",
-      "default": "Stray Dog Clothing was founded in 2014 by people who live life off the beaten path. UTVs, boats, lakes, backroads — that's our world."
+      "default": "Stray Dog Clothing was founded in 2014 by people who live life off the beaten path. UTVs, boats, lakes, backroads - that is our world."
     },
     {
       "type": "textarea",
       "id": "origin_body_2",
       "label": "Origin Paragraph 2",
-      "default": "What started as a few shirts sold at local events grew into a full line of apparel built for people who don't follow the crowd."
+      "default": "What started as a few shirts sold at local events grew into a full line of apparel built for people who do not follow the crowd."
     },
     {
       "type": "text",
@@ -196,76 +194,31 @@
       "type": "stat",
       "name": "Stat",
       "settings": [
-        {
-          "type": "text",
-          "id": "number",
-          "label": "Number",
-          "default": "2014"
-        },
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Year Founded"
-        }
+        { "type": "text", "id": "number", "label": "Number", "default": "2014" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Year Founded" }
       ]
     },
     {
       "type": "value",
       "name": "Brand Value",
       "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Live Outside the Lines"
-        },
-        {
-          "type": "textarea",
-          "id": "body",
-          "label": "Description",
-          "default": "Rules are for people who don't have better things to do. We make gear for the ones who'd rather be out there."
-        }
+        { "type": "text", "id": "title", "label": "Title", "default": "Live Outside the Lines" },
+        { "type": "textarea", "id": "body", "label": "Description", "default": "We make gear for the ones who would rather be out there than talking about being out there." }
       ]
     },
     {
       "type": "team_member",
       "name": "Team Member",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "photo",
-          "label": "Photo"
-        },
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Name",
-          "default": "Co-Founder"
-        },
-        {
-          "type": "text",
-          "id": "role",
-          "label": "Role",
-          "default": "Stray Dog Clothing"
-        }
+        { "type": "image_picker", "id": "photo", "label": "Photo" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Co-Founder" },
+        { "type": "text", "id": "role", "label": "Role", "default": "Stray Dog Clothing" }
       ]
     }
   ],
   "presets": [
     {
-      "name": "SD About Page",
-      "blocks": [
-        { "type": "stat", "settings": { "number": "2014", "label": "Year Founded" } },
-        { "type": "stat", "settings": { "number": "10+", "label": "Years in the Game" } },
-        { "type": "stat", "settings": { "number": "100%", "label": "Built for the Wild" } },
-        { "type": "value", "settings": { "title": "Live Outside the Lines", "body": "Rules are for people who have better things to do." } },
-        { "type": "value", "settings": { "title": "Built to Last", "body": "Every piece is designed to hold up on the trail, at the event, on the water." } },
-        { "type": "value", "settings": { "title": "Real Community", "body": "We show up in person at rallies, swap meets, and outdoor events." } },
-        { "type": "team_member", "settings": { "name": "Co-Founder", "role": "Stray Dog Clothing" } },
-        { "type": "team_member", "settings": { "name": "Co-Founder", "role": "Stray Dog Clothing" } },
-        { "type": "team_member", "settings": { "name": "Team Member", "role": "Stray Dog Clothing" } }
-      ]
+      "name": "SD About Page"
     }
   ]
 }
