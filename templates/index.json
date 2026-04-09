@@ -18,8 +18,8 @@
       ],
       "settings": {
         "image": "shopify://shop_images/photo_2026-04-08_21-19-35.jpg",
-        "height": 700,
-        "overlay_opacity": 45,
+        "height": 600,
+        "overlay_opacity": 20,
         "eyebrow": "Est. 2014 · Built for the wild",
         "heading": "Born Free.\nBuilt Tough.",
         "heading_size": 72,
@@ -110,7 +110,7 @@
         "tagline": "Clothing · Est. 2014",
         "description": "We didn't start in a boardroom. We started in the mud, on the water, at the tailgate. Stray Dog is for the ones who live outside the lines.",
         "link_label": "Read Our Story",
-        "link_url": "/pages/our-story"
+        "link_url": "shopify://pages/our-story"
       }
     },
     "sd-email-signup": {
