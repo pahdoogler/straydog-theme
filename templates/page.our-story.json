@@ -9,10 +9,10 @@
  */
 {
   "sections": {
-    "sd-about": {
+    "main": {
       "type": "sd-about",
       "settings": {}
     }
   },
-  "order": ["sd-about"]
+  "order": ["main"]
 }
