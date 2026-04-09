@@ -18,8 +18,8 @@
       ],
       "settings": {
         "image": "shopify://shop_images/photo_2026-04-08_21-19-35.jpg",
-        "height": 600,
-        "overlay_opacity": 20,
+        "height": 700,
+        "overlay_opacity": 45,
         "eyebrow": "Est. 2014 · Built for the wild",
         "heading": "Born Free.\nBuilt Tough.",
         "heading_size": 72,
