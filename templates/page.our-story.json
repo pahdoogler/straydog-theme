@@ -10,7 +10,7 @@
 {
   "sections": {
     "sd-about": {
-      "type": "sd-about",
+      "type": "sd-about-ourstory",
       "blocks": {
         "stat1": {
           "type": "stat",
