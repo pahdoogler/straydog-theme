@@ -10,16 +10,9 @@
 {
   "sections": {
     "main": {
-      "type": "sd-featured",
-      "settings": {
-        "title": "All Products",
-        "collection": "frontpage",
-        "product_count": 12,
-        "columns": 3
-      }
+      "type": "main-collection",
+      "settings": {}
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }
