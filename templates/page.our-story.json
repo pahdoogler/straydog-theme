@@ -87,7 +87,16 @@
         "tm2",
         "tm3"
       ],
-      "settings": {}
+      "settings": {
+        "hero_sub": "We did not come from a fashion background. We came from the mud, the water, the tailgate, and the trail. Stray Dog started in 2014 as a way to wear what you live.",
+        "origin_image": "shopify://shop_images/photo_2026-04-08_21-19-51.jpg",
+        "origin_title": "Built From The Ground Up",
+        "origin_body_1": "Stray Dog Clothing was founded in 2014 by people who live life off the beaten path. UTVs, boats, lakes, backroads that is our world.",
+        "origin_body_2": "What started as a few shirts sold at local events grew into a full line of apparel built for people who do not follow the crowd.",
+        "cta_label": "Shop the Collection",
+        "cta_url": "shopify://collections",
+        "cta_sub": "Gear built for the ones who live it. Shop the full collection and find your next favorite piece."
+      }
     }
   },
   "order": [
