@@ -52,8 +52,44 @@
 }
 .sd-header__icon:hover { color: #fff; }
 .sd-header__icon svg { width: 20px; height: 20px; }
+
+/* Hamburger button */
+.sd-header__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #aaa;
+}
+.sd-header__hamburger:hover { color: #fff; }
+.sd-header__hamburger svg { width: 24px; height: 24px; }
+
+/* Mobile drawer */
+.sd-mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #0a0a0a;
+  border-top: 1px solid #222;
+  padding: 1rem 2rem;
+}
+.sd-mobile-nav.is-open { display: flex; }
+.sd-mobile-nav a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #1a1a1a;
+  transition: color 0.2s;
+}
+.sd-mobile-nav a:last-child { border-bottom: none; }
+.sd-mobile-nav a:hover { color: #fff; }
+
 @media (max-width: 768px) {
   .sd-header__nav { display: none; }
+  .sd-header__hamburger { display: flex; }
 }
 </style>
 
@@ -78,9 +114,26 @@
       <a href="/cart" class="sd-header__icon" aria-label="Cart">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       </a>
+      <!-- Hamburger (mobile only) -->
+      <button class="sd-header__hamburger" id="sd-hamburger" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </div>
 </header>
+
+<!-- Mobile nav drawer -->
+<nav class="sd-mobile-nav" id="sd-mobile-nav">
+  {%- for link in section.settings.menu.links -%}
+    <a href="{{ link.url }}">{{ link.title }}</a>
+  {%- endfor -%}
+</nav>
+
+<script>
+  document.getElementById('sd-hamburger').addEventListener('click', function() {
+    document.getElementById('sd-mobile-nav').classList.toggle('is-open');
+  });
+</script>
 
 {% schema %}
 {
