@@ -1,0 +1,212 @@
+<style>
+.sd-cart {
+  background: #0a0a0a;
+  min-height: 60vh;
+  padding: 4rem 2rem;
+}
+.sd-cart__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.sd-cart__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.sd-cart__empty {
+  color: #aaa;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.sd-cart__empty a {
+  color: #fff;
+  text-decoration: underline;
+}
+.sd-cart__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.sd-cart__table th {
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #555;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #222;
+}
+.sd-cart__item td {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #1a1a1a;
+  vertical-align: middle;
+}
+.sd-cart__item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+.sd-cart__item-title {
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.sd-cart__item-variant {
+  color: #555;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.sd-cart__item-price {
+  color: #aaa;
+  font-size: 14px;
+}
+.sd-cart__qty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sd-cart__qty button {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sd-cart__qty button:hover { background: #222; }
+.sd-cart__qty span {
+  color: #fff;
+  font-size: 14px;
+  min-width: 24px;
+  text-align: center;
+}
+.sd-cart__remove {
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+}
+.sd-cart__remove:hover { color: #fff; }
+.sd-cart__summary {
+  margin-top: 2rem;
+  text-align: right;
+}
+.sd-cart__subtotal {
+  color: #aaa;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.sd-cart__subtotal span {
+  color: #fff;
+  font-size: 18px;
+  margin-left: 1rem;
+}
+.sd-cart__checkout {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: #fff;
+  color: #0a0a0a;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 1rem 3rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+.sd-cart__checkout:hover {
+  background: #aaa;
+}
+@media (max-width: 768px) {
+  .sd-cart__table th:nth-child(3),
+  .sd-cart__item td:nth-child(3) { display: none; }
+}
+</style>
+
+<section class="sd-cart">
+  <div class="sd-cart__inner">
+    <h1 class="sd-cart__title">Your Cart</h1>
+
+    {%- if cart.item_count == 0 -%}
+      <p class="sd-cart__empty">
+        Your cart is empty. <a href="/collections/all">Continue shopping</a>
+      </p>
+    {%- else -%}
+      <form action="/cart" method="post">
+        <table class="sd-cart__table">
+          <thead>
+            <tr>
+              <th colspan="2">Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for item in cart.items -%}
+              <tr class="sd-cart__item">
+                <td>
+                  <a href="{{ item.url }}">
+                    <img class="sd-cart__item-image" src="{{ item.image | img_url: '160x160', crop: 'center' }}" alt="{{ item.title }}">
+                  </a>
+                </td>
+                <td>
+                  <a href="{{ item.url }}" class="sd-cart__item-title">{{ item.product_title }}</a>
+                  {%- if item.variant.title != 'Default Title' -%}
+                    <p class="sd-cart__item-variant">{{ item.variant.title }}</p>
+                  {%- endif -%}
+                </td>
+                <td class="sd-cart__item-price">{{ item.price | money }}</td>
+                <td>
+                  <div class="sd-cart__qty">
+                    <button type="submit" name="updates[{{ item.key }}]" value="{{ item.quantity | minus: 1 }}">−</button>
+                    <span>{{ item.quantity }}</span>
+                    <button type="submit" name="updates[{{ item.key }}]" value="{{ item.quantity | plus: 1 }}">+</button>
+                  </div>
+                </td>
+                <td class="sd-cart__item-price">{{ item.line_price | money }}</td>
+                <td>
+                  <button class="sd-cart__remove" type="submit" name="updates[{{ item.key }}]" value="0">×</button>
+                </td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+
+        <div class="sd-cart__summary">
+          <p class="sd-cart__subtotal">
+            Subtotal <span>{{ cart.total_price | money }}</span>
+          </p>
+          <button type="submit" name="checkout" class="sd-cart__checkout">
+            Checkout
+          </button>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}
