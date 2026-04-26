@@ -57,21 +57,32 @@
         "tm1": {
           "type": "team_member",
           "settings": {
-            "name": "Co-Founder",
-            "role": "Stray Dog Clothing"
-          }
-        },
-        "tm2": {
-          "type": "team_member",
-          "settings": {
-            "name": "Co-Founder",
+            "photo": "shopify://shop_images/IMG_6402.jpg",
+            "name": "THE OG",
             "role": "Stray Dog Clothing"
           }
         },
         "tm3": {
           "type": "team_member",
           "settings": {
-            "name": "Team Member",
+            "photo": "shopify://shop_images/IMG_0346.jpg",
+            "name": "THE AQUINOS",
+            "role": "Stray Dog Clothing"
+          }
+        },
+        "team_member_hfjVPU": {
+          "type": "team_member",
+          "settings": {
+            "photo": "shopify://shop_images/IMG_0034.jpg",
+            "name": "THE ARNOLDS",
+            "role": "Stray Dog Clothing"
+          }
+        },
+        "team_member_CAqm8g": {
+          "type": "team_member",
+          "settings": {
+            "photo": "shopify://shop_images/IMG_0349.png",
+            "name": "THE VANROSENDALES",
             "role": "Stray Dog Clothing"
           }
         }
@@ -84,8 +95,9 @@
         "val2",
         "val3",
         "tm1",
-        "tm2",
-        "tm3"
+        "tm3",
+        "team_member_hfjVPU",
+        "team_member_CAqm8g"
       ],
       "settings": {
         "hero_sub": "We did not come from a fashion background. We came from the mud, the water, the tailgate, and the trail. Stray Dog started in 2014 as a way to wear what you live.",
