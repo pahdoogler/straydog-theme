@@ -78,19 +78,19 @@
     "sd-lifestyle": {
       "type": "sd-lifestyle",
       "blocks": {
-        "mens": {
+        "panel_Cramdz": {
           "type": "panel",
           "settings": {
-            "image": "shopify://shop_images/photo_2026-04-08_21-19-24.jpg",
+            "image": "shopify://shop_images/6AA6E17E-8973-482F-B61F-ABCA226322DF.jpg",
             "title": "Hit the Trail",
             "subtitle": "Men's Collection",
-            "link": "shopify://collections/mens"
+            "link": ""
           }
         },
         "womens": {
           "type": "panel",
           "settings": {
-            "image": "shopify://shop_images/photo_2026-04-08_21-18-53.jpg",
+            "image": "shopify://shop_images/F58B01F6-0C5E-4A35-9A37-D24338641663.jpg",
             "title": "Dock Ready",
             "subtitle": "Women's Collection",
             "link": "shopify://collections/womens"
@@ -98,7 +98,7 @@
         }
       },
       "block_order": [
-        "mens",
+        "panel_Cramdz",
         "womens"
       ],
       "settings": {}
