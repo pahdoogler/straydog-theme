@@ -1,6 +1,449 @@
+{% doc %}
+  @prompt
+    A magazine-style editorial layout, only four slorts, let me be able to add links to the exerpt
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-editorial-layout-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.section_padding }}px;
+  }
+
+  .ai-editorial-container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .ai-editorial-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.border_radius }}px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .ai-editorial-card-{{ ai_gen_id }}:hover {
+    transform: translateY(-4px);
+  }
+
+  .ai-editorial-card-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ai-editorial-card-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 300px;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-editorial-card-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-editorial-card-content-{{ ai_gen_id }} {
+    padding: 24px;
+  }
+
+  .ai-editorial-card-category-{{ ai_gen_id }} {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    color: {{ block.settings.category_color }};
+    font-weight: 600;
+  }
+
+  .ai-editorial-card-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_title_size }}px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-editorial-card-excerpt-{{ ai_gen_id }} {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 12px 0;
+    color: {{ block.settings.text_color }};
+    opacity: 0.8;
+  }
+
+  .ai-editorial-card-excerpt-{{ ai_gen_id }} a {
+    color: {{ block.settings.link_color }};
+    text-decoration: underline;
+  }
+
+  .ai-editorial-card-excerpt-{{ ai_gen_id }} a:hover {
+    opacity: 0.8;
+  }
+
+  .ai-editorial-card-meta-{{ ai_gen_id }} {
+    font-size: 12px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.6;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-editorial-layout-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-editorial-container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<editorial-layout-{{ ai_gen_id }} class="ai-editorial-layout-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-editorial-container-{{ ai_gen_id }}">
+    {% for i in (1..4) %}
+      {% liquid
+        assign image_key = 'article_image_' | append: i
+        assign category_key = 'article_category_' | append: i
+        assign title_key = 'article_title_' | append: i
+        assign excerpt_key = 'article_excerpt_' | append: i
+        assign author_key = 'article_author_' | append: i
+        assign date_key = 'article_date_' | append: i
+
+        assign image = block.settings[image_key]
+        assign category = block.settings[category_key]
+        assign title = block.settings[title_key]
+        assign excerpt = block.settings[excerpt_key]
+        assign author = block.settings[author_key]
+        assign date = block.settings[date_key]
+      %}
+      <article class="ai-editorial-card-{{ ai_gen_id }}">
+        {% if image %}
+          <img
+            src="{{ image | image_url: width: 800 }}"
+            alt="{{ image.alt | escape }}"
+            class="ai-editorial-card-image-{{ ai_gen_id }}"
+            loading="lazy"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+          >
+        {% else %}
+          <div class="ai-editorial-card-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+        <div class="ai-editorial-card-content-{{ ai_gen_id }}">
+          {% if category != blank %}
+            <div class="ai-editorial-card-category-{{ ai_gen_id }}">{{ category }}</div>
+          {% endif %}
+          {% if title != blank %}
+            <h3 class="ai-editorial-card-title-{{ ai_gen_id }}">{{ title }}</h3>
+          {% endif %}
+          {% if excerpt != blank %}
+            <div class="ai-editorial-card-excerpt-{{ ai_gen_id }}">{{ excerpt }}</div>
+          {% endif %}
+          {% if author != blank or date != blank %}
+            <div class="ai-editorial-card-meta-{{ ai_gen_id }}">
+              {% if author != blank %}
+                {{ author }}
+              {% endif %}
+              {% if author != blank and date != blank %}
+                •
+              {% endif %}
+              {% if date != blank %}
+                {{ date }}
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</editorial-layout-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class EditorialLayout{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.style.display = 'block';
+      }
+    }
+
+    customElements.define('editorial-layout-{{ ai_gen_id }}', EditorialLayout{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Magazine editorial layout",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "category_color",
+      "label": "Category",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "label": "Card title size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Article 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "article_image_1",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "article_category_1",
+      "label": "Category",
+      "default": "Featured"
+    },
+    {
+      "type": "text",
+      "id": "article_title_1",
+      "label": "Title",
+      "default": "The Future of Sustainable Fashion"
+    },
+    {
+      "type": "richtext",
+      "id": "article_excerpt_1",
+      "label": "Excerpt",
+      "default": "<p>Exploring innovative materials and ethical practices reshaping the industry.</p>"
+    },
+    {
+      "type": "text",
+      "id": "article_author_1",
+      "label": "Author",
+      "default": "Sarah Mitchell"
+    },
+    {
+      "type": "text",
+      "id": "article_date_1",
+      "label": "Date",
+      "default": "April 28, 2026"
+    },
+    {
+      "type": "header",
+      "content": "Article 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "article_image_2",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "article_category_2",
+      "label": "Category",
+      "default": "Style"
+    },
+    {
+      "type": "text",
+      "id": "article_title_2",
+      "label": "Title",
+      "default": "Spring Collection Highlights"
+    },
+    {
+      "type": "richtext",
+      "id": "article_excerpt_2",
+      "label": "Excerpt",
+      "default": "<p>Discover the season's must-have pieces.</p>"
+    },
+    {
+      "type": "text",
+      "id": "article_author_2",
+      "label": "Author",
+      "default": "Emma Chen"
+    },
+    {
+      "type": "text",
+      "id": "article_date_2",
+      "label": "Date",
+      "default": "April 25, 2026"
+    },
+    {
+      "type": "header",
+      "content": "Article 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "article_image_3",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "article_category_3",
+      "label": "Category",
+      "default": "Trends"
+    },
+    {
+      "type": "text",
+      "id": "article_title_3",
+      "label": "Title",
+      "default": "Minimalist Wardrobe Essentials"
+    },
+    {
+      "type": "richtext",
+      "id": "article_excerpt_3",
+      "label": "Excerpt",
+      "default": "<p>Building a timeless capsule collection.</p>"
+    },
+    {
+      "type": "text",
+      "id": "article_author_3",
+      "label": "Author",
+      "default": "James Park"
+    },
+    {
+      "type": "text",
+      "id": "article_date_3",
+      "label": "Date",
+      "default": "April 22, 2026"
+    },
+    {
+      "type": "header",
+      "content": "Article 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "article_image_4",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "article_category_4",
+      "label": "Category",
+      "default": "Culture"
+    },
+    {
+      "type": "text",
+      "id": "article_title_4",
+      "label": "Title",
+      "default": "Street Style Inspiration"
+    },
+    {
+      "type": "richtext",
+      "id": "article_excerpt_4",
+      "label": "Excerpt",
+      "default": "<p>Fresh looks from the streets around the world.</p>"
+    },
+    {
+      "type": "text",
+      "id": "article_author_4",
+      "label": "Author",
+      "default": "Alex Rivera"
+    },
+    {
+      "type": "text",
+      "id": "article_date_4",
+      "label": "Date",
+      "default": "April 20, 2026"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Magazine editorial layout"
+    }
+  ]
+}
 {% endschema %}
