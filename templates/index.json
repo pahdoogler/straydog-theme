@@ -103,25 +103,68 @@
       ],
       "settings": {}
     },
-    "sd-brand-bar": {
-      "type": "sd-brand-bar",
-      "settings": {
-        "brand_name": "Stray Dog",
-        "tagline": "Clothing · Est. 2014",
-        "description": "We didn't start in a boardroom. We started in the mud, on the water, at the tailgate. Stray Dog is for the ones who live outside the lines.",
-        "link_label": "Read Our Story",
-        "link_url": "shopify://pages/our-story"
-      }
+    "1777417109bcee88f7": {
+      "type": "_blocks",
+      "settings": {}
     },
     "sd-email-signup": {
       "type": "sd-email-signup",
       "settings": {
-        "eyebrow": "Join the Pack",
+        "eyebrow": "",
         "title": "Stay Stray",
         "subtext": "New drops, event appearances, and exclusive deals. No spam, just the good stuff.",
         "placeholder": "your@email.com",
         "btn_label": "Subscribe"
       }
+    },
+    "1777418350ccf4b283": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_7a19cb9_6XVHfH": {
+          "type": "ai_gen_block_7a19cb9",
+          "settings": {
+            "desktop_width_percent": 100,
+            "section_padding": 40,
+            "grid_gap": 20,
+            "border_radius": 8,
+            "background_color": "#111111",
+            "card_background": "#1a1a1a",
+            "text_color": "#ffffff",
+            "category_color": "#ffffff",
+            "link_color": "#ffffff",
+            "card_title_size": 20,
+            "article_image_1": "shopify://shop_images/FEE5BBC6-9949-40F3-8933-63A056CD4529.png",
+            "article_category_1": "STRAY DOG",
+            "article_title_1": "- EST. 2014 -",
+            "article_excerpt_1": "<p>We didn't start in a boardroom. We started in the mud, on the water, at the tailgate. Stray Dog is for the ones who live outside the lines.</p><p><a href=\"https://straydogclothing.com/pages/our-story\" title=\"https://straydogclothing.com/pages/our-story\">READ OUR STORY →</a></p>",
+            "article_author_1": "",
+            "article_date_1": "",
+            "article_image_2": "shopify://shop_images/Screenshot_2026-04-08_212634.png",
+            "article_category_2": "LETS BE FRIENDS",
+            "article_title_2": "FIND US ON SOCIALS:",
+            "article_excerpt_2": "<p>INSTAGRAM-</p><p>FACEBOOK-</p><p>TIKTOK-</p><p></p>",
+            "article_author_2": "",
+            "article_date_2": "",
+            "article_image_3": "shopify://shop_images/940FB503-42E2-40FA-B1B7-5B3C1F9009AA_1_201_a_85ab65c0-7048-4ab7-b1e0-4e523a3ce0ea.jpg",
+            "article_category_3": "GIVING BACK",
+            "article_title_3": "WE DONATE A PORTION OF EVERY PURCHASE TO LOCAL ANIMAL SHELTERS.",
+            "article_excerpt_3": "<p>Helping provide food, care, and second chances for dogs in need.</p>",
+            "article_author_3": "",
+            "article_date_3": "",
+            "article_image_4": "shopify://shop_images/american-flag.png",
+            "article_category_4": "GRATITUDE",
+            "article_title_4": "THANK YOU FOR YOUR SERVICE",
+            "article_excerpt_4": "<p>Honoring our military and first responders everyday.</p>",
+            "article_author_4": "",
+            "article_date_4": "\\"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_7a19cb9_6XVHfH"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -129,7 +172,8 @@
     "sd-badge-strip",
     "sd-featured",
     "sd-lifestyle",
-    "sd-brand-bar",
-    "sd-email-signup"
+    "1777417109bcee88f7",
+    "sd-email-signup",
+    "1777418350ccf4b283"
   ]
 }
